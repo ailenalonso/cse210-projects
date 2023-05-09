@@ -2,14 +2,13 @@ using System;
 
 class Program
 {
-    static ScriptureService service = new ScriptureService();
+    static Scripture service = new Scripture();
 
     static void Main(string[] args)
     {
-        Scripture reference;
+        Reference reference;
         
-        // EXCEEDING REQUIREMENTS: Program read a JSON file
-        // and prompts the user to choose a scripture
+        // The program read a JSON file and prompts the user to choose a scripture as exeeding requirements.
         int userInput = showLibraryAndGetUserInput();
         if (userInput == 0) reference = service.ChooseRandom();
         else reference = service.ChooseOne(userInput - 1);
@@ -29,8 +28,8 @@ class Program
         return 0;
     }
 
-    static void continuousHidding(Scripture original)
+    static void continuousHidding(Reference original)
     {
-        HidingService.getInstance().RandomlyHideWords(original);
+        Word.getInstance().RandomlyHideWords(original);
     }
 }

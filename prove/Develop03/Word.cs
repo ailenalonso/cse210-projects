@@ -1,36 +1,36 @@
 using System.Text.RegularExpressions;
 
-class HidingService
+class Word
 {
-    static private HidingService _instance = new HidingService();
+    static private Word _instance = new Word();
 
-    static public HidingService getInstance() { return _instance; }
+    static public Word getInstance() { return _instance; }
 
-    public void RandomlyHideWords(Scripture original)
+    public void RandomlyHideWords(Reference original)
     {
-        Scripture modified = new Scripture();
+        Reference modified = new Reference();
         Regex validate = new Regex(@"[a-zA-Z.,!-;]");
 
         while (true)
         {
             Console.Clear();
             original.DisplayWithVerse();
-            Console.WriteLine("\nEnter to continue. Type 'quit' to finish the program: ");
+            Console.WriteLine("\nPress Enter to continue or type 'quit' to finish: ");
 
             List<string> hiddenTexts = new List<string>();
 
-            // Quits the loop and end the program
+            // End the program
             if (Console.ReadLine() == "quit") break;
 
             original.text.ForEach(verse =>
             {
-                // Splitting my verse text into an array of words
+                // Converting the verse into an array of words
                 List<string> words = verse.Split(' ').ToList();
                 int hCount = 0;
-                // Iterate over all words
+                
                 for (int i = 0; i < words.Count(); i++)
                 {
-                    // Chooses randomly true or false to hide each word
+                    // Randomly hide a word
                     bool shallHide = new Random().Next(0, 100) % 3 == 0 ? true : false;
                     if (shallHide && !words[i].Contains("_"))
                     {
@@ -39,7 +39,7 @@ class HidingService
                     }
                     if (hCount == 4) i = words.Count();
                 }
-                // Joining modified text verse
+                
                 verse = String.Join(' ', words);
                 hiddenTexts.Add(verse);
             });
@@ -51,12 +51,12 @@ class HidingService
 
             original = modified;
 
-            // Checks whether there's no longer words to hide
+            // Checks if it's no longer words to hide
             if (!validate.IsMatch(String.Join("\n", hiddenTexts))) break;
         }
 
         Console.Clear();
         original.DisplayWithVerse();
-        Console.WriteLine("\nI hope you memorized! But feel free to start it over.");
+        Console.WriteLine("\nI hope you memorized the scripture!");
     }
 }
