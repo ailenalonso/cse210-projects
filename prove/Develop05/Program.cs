@@ -50,34 +50,27 @@ class Program
             case 1:
                 service.CreateGoal();
                 break;
-
             case 2:
                 service.PrintGoals();
                 break;
-
             case 3:
                 service.SaveFile(null);
                 break;
-
             case 4:
                 service.LoadFile(null);
                 break;
-
             case 5:
                 service.CompleteGoal();
                 break;
-
             case 6:
                 Console.WriteLine();
                 Console.WriteLine("Quitting Program...");
-
                 if (service.GetScore() > 0)
                 {
                     Console.WriteLine("Auto saving progress as 'autosave.json'...");
                     service.SaveFile("autosave");
                 }
                 break;
-
             default:
                 Console.WriteLine("Please, enter a valid option or quit the program");
                 break;

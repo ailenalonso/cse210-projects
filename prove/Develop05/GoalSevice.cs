@@ -23,15 +23,12 @@ class GoalService
             case 1:
                 CreateSimpleGoal();
                 break;
-
             case 2:
                 CreateEternalGoal();
                 break;
-
             case 3:
                 CreateChecklistGoal();
                 break;
-
             default:
                 Console.Write("Invalid option!");
                 break;
@@ -120,7 +117,6 @@ class GoalService
                         e.points = goal.points;
                         this._goals.Add(e);
                         break;
-
                     case "ChecklistGoal":
                         ChecklistGoal c = new ChecklistGoal();
                         c.name = goal.name;
@@ -131,7 +127,6 @@ class GoalService
                         c.timesCompleted = goal.timesCompleted;
                         this._goals.Add(c);
                         break;
-
                     default:
                         this._goals.Add(goal);
                         break;
