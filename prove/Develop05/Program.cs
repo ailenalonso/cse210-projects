@@ -4,7 +4,7 @@ class Program
 {
     static GoalService service = new GoalService();
 
-    // An autosave and autoload feature as exeeding requirements.
+    // An autosave and autoload features as exceeding requirements.
     static void Main(string[] args)
     {
         int opt = 0;
